@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:lorrence_app/app/data/screen_size_config.dart';
-import 'package:lorrence_app/app/modules/login/controllers/login_controller.dart';
+import 'package:lorrence_app/app/modules/register/controllers/register_controller.dart';
 import 'package:lorrence_app/app/modules/widgets/btn_widget.dart';
 
-class LoginView extends GetView<LoginController> {
+class RegisterView extends GetView<RegisterController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -32,6 +31,26 @@ class LoginView extends GetView<LoginController> {
                         style: TextStyle(
                           fontSize: 20,
                         ),
+                      ),
+                      SizedBox(
+                        height: 16,
+                      ),
+                      TextFormField(
+                        decoration: InputDecoration(
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          labelText: "Full Name",
+                          prefixIcon: Icon(Icons.email),
+                        ),
+                        keyboardType: TextInputType.text,
+                        controller: controller.fullNameController,
+                        onSaved: (value) {
+                          controller.fullname = value!;
+                        },
+                        validator: (value) {
+                          return controller.validateName(value!);
+                        },
                       ),
                       SizedBox(
                         height: 16,
@@ -82,31 +101,25 @@ class LoginView extends GetView<LoginController> {
                           padding: EdgeInsets.symmetric(
                               horizontal: 10.0, vertical: 10.0),
                           child: Text(
-                            'Don\'t have an account? Create One Now',
+                            'Have an account? Sign In',
                             textAlign: TextAlign.right,
                             style: TextStyle(
                               fontSize: 16.0,
                             ),
                           ),
                         ),
-                        onTap: () => Get.toNamed('/register'),
-                      ),
-                      Text(
-                        'Forgotten Password?',
-                        textAlign: TextAlign.right,
-                        style: TextStyle(
-                          fontSize: 16.0,
-                        ),
+                        onTap: () => Get.back(),
                       ),
                       SizedBox(
                         height: 16,
                       ),
                       BtnWidget(
-                        labelText: 'Login',
-                        onPressed: () => Get.toNamed('/bottom-nav-bar'),
-                        showIcon: true,
-                        icon: Icons.login,
-                      ),
+                          labelText: 'Register',
+                          onPressed: () {
+                            Get.toNamed('/login');
+                          },
+                          showIcon: true,
+                          icon: Icons.person_add),
                       SizedBox(
                         height: 16,
                       ),

@@ -4,7 +4,7 @@ import 'package:get/get.dart';
 import 'package:lorrence_app/app/data/globals.dart';
 import 'package:lorrence_app/app/data/screen_size_config.dart';
 import 'package:lorrence_app/app/data/theme/colors.dart';
-import 'package:lorrence_app/app/data/widgets/btn_widget.dart';
+import 'package:lorrence_app/app/modules/widgets/btn_widget.dart';
 import 'package:video_player/video_player.dart';
 
 import '../controllers/onboarding_controller.dart';
